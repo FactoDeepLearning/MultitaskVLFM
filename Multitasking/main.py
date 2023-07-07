@@ -103,12 +103,10 @@ def main(args):
 
     if params["training"]["train_class_linear"]:
         params["training"]["metric_names"]["train"].append("loss_class_linear")
-        params["training"]["metric_names"]["valid"].append("accuracy_linear")
         params["model"]["classif_linear"] = True
 
     if params["training"]["train_attr_linear"]:
         params["training"]["metric_names"]["train"].append("loss_attr_linear")
-        params["training"]["metric_names"]["valid"].append("attr_mAP_linear")
         params["model"]["attr_linear"] = True
 
     if params["training"]["train_oracle_loc"]:

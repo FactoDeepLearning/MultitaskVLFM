@@ -93,12 +93,12 @@ def _transform(n_px):
 
 
 def available_models() -> List[str]:
-    """Returns the names of available Multitasking models"""
+    """Returns the names of available CLIP models"""
     return list(_MODELS.keys())
 
 
 def load(name: str, params: dict, device: Union[str, torch.device] = "cuda" if torch.cuda.is_available() else "cpu", jit: bool = False, download_root: str = None):
-    """Load a Multitasking model
+    """Load a CLIP model
 
     Parameters
     ----------
@@ -117,7 +117,7 @@ def load(name: str, params: dict, device: Union[str, torch.device] = "cuda" if t
     Returns
     -------
     model : torch.nn.Module
-        The Multitasking model
+        The CLIP model
 
     preprocess : Callable[[PIL.Image], torch.Tensor]
         A torchvision transform that converts a PIL image into a tensor that the returned model can take as its input
@@ -210,7 +210,7 @@ def tokenize(texts: Union[str, List[str]], context_length: int = 77, truncate: b
         An input string or a list of input strings to tokenize
 
     context_length : int
-        The context length to use; all Multitasking models use 77 as the context length
+        The context length to use; all CLIP models use 77 as the context length
 
     truncate: bool
         Whether to truncate the text in case its encoding is longer than the context length

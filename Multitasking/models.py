@@ -10,9 +10,9 @@ import wget
 
 
 OPEN_MODELS = {
-    "open-ViT-L/14": 'hf-hub:laion/Multitasking-ViT-L-14-laion2B-s32B-b82K',
-    "open-ViT-H/14": 'hf-hub:laion/Multitasking-ViT-H-14-laion2B-s32B-b79K',
-    "open-ViT-G/14": 'hf-hub:laion/Multitasking-ViT-bigG-14-laion2B-39B-b160k',
+    "open-ViT-L/14": 'hf-hub:laion/CLIP-ViT-L-14-laion2B-s32B-b82K',
+    "open-ViT-H/14": 'hf-hub:laion/CLIP-ViT-H-14-laion2B-s32B-b79K',
+    "open-ViT-G/14": 'hf-hub:laion/CLIP-ViT-bigG-14-laion2B-39B-b160k',
 }
 
 

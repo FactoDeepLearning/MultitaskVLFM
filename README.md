@@ -17,12 +17,12 @@ Configuration used for the paper:
 
 ### Installation
 ```commandline
-git clone ...
-cd ...
+git clone https://github.com/FactoDeepLearning/MultitaskVLFM.git
+cd MultitaskVLFM
 
 # In your virtualenv, for instance:
-conda --create -n MultiTaskVLFM python=3.10
-conda activate MultiTaskVLFM
+conda create --name VLFM python=3.10
+conda activate VLFM
 
 pip install -e .
 ```

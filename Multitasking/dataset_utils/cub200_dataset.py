@@ -563,12 +563,11 @@ def check_or_download_CUB200_dataset():
     dataset_path = "Datasets/CUB200/"
     tar_path = os.path.join(dataset_path, "CUB_200_2011.tgz")
     fold_path = os.path.join(dataset_path, "CUB_200_2011")
-    if not os.path.exists(tar_path):
+    if not os.path.exists(fold_path):
         os.makedirs(dataset_path, exist_ok=True)
         print("Downloading CUB200 dataset, this can take a moment...")
         wget.download("https://data.caltech.edu/records/65de6-vp158/files/CUB_200_2011.tgz?download=1", out=dataset_path)
         print("Download completed")
-    if not os.path.exists(fold_path):
         tar = tarfile.open(tar_path)
         print("Extraction...")
         tar.extractall(path=dataset_path)

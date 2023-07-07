@@ -95,7 +95,7 @@ class GenericDataset(Dataset):
         if self.params["load_oracle_segmentation"]:
             sample["oracle_seg"] = self.load_oracle_segmentation(sample)
 
-        # IF Multitasking IMAGE ENCODER
+        # IF CLIP IMAGE ENCODER
         if self.params["other_vision_encoder"] is None:
             self.before_preprocess_sample(sample, self.preprocess_fn)
             sample["image"] = self.preprocess_fn(Image.fromarray(sample["image"]))

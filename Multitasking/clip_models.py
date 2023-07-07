@@ -208,12 +208,12 @@ class Transformer(nn.Module):
     def forward(self, x: torch.Tensor):
         return self.resblocks(x)
 
-    def all_but_last_layer(self, x):
+    def all_but_last_layer(self, x, attn_mask=None):
         for r in list(self.resblocks)[:-1]:
             x = r(x)
         return x
 
-    def last_layer(self, x):
+    def last_layer(self, x, attn_mask=None):
         return list(self.resblocks)[-1](x)
 
 

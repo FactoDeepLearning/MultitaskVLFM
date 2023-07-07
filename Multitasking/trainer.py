@@ -706,7 +706,7 @@ class Trainer:
         sequences = list()
         with torch.set_grad_enabled(train):
             with tqdm(total=len(dataset)) as pbar:
-                pbar.set_description("Computing Multitasking image embedding for {}".format(set_name))
+                pbar.set_description("Computing image embedding for {}".format(set_name))
                 for i, batch_data in enumerate(dataloader):
                     features, sequence = self.compute_image_embedding(batch_data["images"].to(device=self.device), return_after=return_after)
                     image_features.append(features.to(device=device, dtype=dtype))
