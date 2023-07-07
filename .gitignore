@@ -1,0 +1,12 @@
+Results/**
+Oracle_seg/**
+Datasets/**
+Models/**
+Tokenizers/**
+.idea
+*.pyc
+**/__pycache__
+*.pt
+*.egg-info
+*.tar.gz
+
