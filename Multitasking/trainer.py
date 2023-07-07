@@ -434,7 +434,6 @@ class Trainer:
                 num_attr = attr_image_scores.size(1)//2
                 attr_features_for_image = attr_features[:, :num_attr]
                 attr_image_scores, neg_attr_image_scores = attr_image_scores[:, :num_attr], attr_image_scores[:, num_attr:]
-                attr_sequence = attr_sequence[:, :num_attr]
 
             logits_loc = logit_scale * self.compute_sim_token_attr_visual(image_sequence, attr_features_for_image)
 
@@ -505,8 +504,8 @@ class Trainer:
 
         values = {
             "loss": [loss.cpu().item(), ],
-            "loss_class_image": [loss_class_image.cpu().item() if isinstance(loss_class_image, torch.Tensor) else None, ],
-            "loss_attr_image": [loss_attr_image.cpu().item() if isinstance(loss_attr_image, torch.Tensor) else None, ],
+            "loss_class": [loss_class_image.cpu().item() if isinstance(loss_class_image, torch.Tensor) else None, ],
+            "loss_attr": [loss_attr_image.cpu().item() if isinstance(loss_attr_image, torch.Tensor) else None, ],
             "loss_loc": [loss_loc.cpu().item() if isinstance(loss_loc, torch.Tensor) else None, ],
             "loss_loc_oracle": [loss_loc_oracle.cpu().item() if isinstance(loss_loc_oracle, torch.Tensor) else None, ],
             "gt_classif": torch.argmax(gt_image, dim=1).cpu(),
@@ -520,9 +519,9 @@ class Trainer:
         }
 
         if loss_class_linear is not None:
-            values["loss_class_linear"] = [loss_class_linear.cpu().item(), ]
+            values["loss_proj"] = [loss_class_linear.cpu().item(), ]
         if loss_attr_linear is not None:
-            values["loss_attr_linear"] = [loss_attr_linear.cpu().item(), ]
+            values["loss_alpha"] = [loss_attr_linear.cpu().item(), ]
 
         return values
 

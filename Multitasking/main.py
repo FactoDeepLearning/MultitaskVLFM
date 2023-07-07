@@ -54,7 +54,7 @@ def main(args):
             },
             "gradient_acc": 200,
             "metric_names": {
-                "train": ["loss", "loss_class_image", "loss_attr_image", "loss_loc",  "accuracy", "top5", "attr_mAP", "loc_mAP"],
+                "train": ["loss", "loss_class", "loss_attr", "loss_loc", "accuracy", "top5", "attr_mAP", "loc_mAP"],
                 "valid": ["accuracy", "top5", "attr_mAP", "loc_mAP", ],
             },
             "optimizer": {
@@ -102,11 +102,11 @@ def main(args):
         params["model"]["config"]["vision"][0] = args.image_encoder
 
     if params["training"]["train_class_linear"]:
-        params["training"]["metric_names"]["train"].append("loss_class_linear")
+        params["training"]["metric_names"]["train"].append("loss_proj")
         params["model"]["classif_linear"] = True
 
     if params["training"]["train_attr_linear"]:
-        params["training"]["metric_names"]["train"].append("loss_attr_linear")
+        params["training"]["metric_names"]["train"].append("loss_alpha")
         params["model"]["attr_linear"] = True
 
     if params["training"]["train_oracle_loc"]:

@@ -81,7 +81,7 @@ class MetricManager:
             elif metric_name in ["loc_mAP", ]:
                 value, _ = compute_loc_mAP_by_attr_and_global(self.epoch_metrics["loc_mAP"])
                 value = 100 * value
-            elif metric_name in ["loss", "loss_class_image", "loss_attr_image", "loss_loc", "loss_loc_oracle", "loss_class_linear", "loss_attr_linear"]:
+            elif "loss" in metric_name:
                 value = None
                 if len(self.epoch_metrics[metric_name]) > 0:
                     mask = np.array(self.epoch_metrics[metric_name]) != None
