@@ -80,9 +80,6 @@ class CUBDataset(GenericDataset):
             sample["oracle_attr_location"] = self.oracle_mask_to_patch_loc(sample)
         return sample
 
-    def text_preprocessing(self):
-        self.class_attr_gt = self.get_class_attribute_gt()
-
     def get_class_names(self):
         classes = dict()
         classes_path = os.path.join(self.path, "CUB_200_2011", "classes.txt")
@@ -228,27 +225,6 @@ class CUBDataset(GenericDataset):
         thresholds = torch.tensor([1, 2, 3, 4])
         d = self.image_id_attr_mapping[img_id]
         return torch.stack([(d[i]["certainty"] >= thresholds).int() for i in range(self.num_attr)]).permute(1, 0)
-
-    def get_class_attribute_gt(self, confidence=3):
-        class_attr = dict()
-        masks = dict()
-        for s in self.samples:
-            if s["class_id"] in class_attr:
-                class_attr[s["class_id"]] = torch.cat([class_attr[s["class_id"]], s["attr"].unsqueeze(0)], dim=0)
-                masks[s["class_id"]] = torch.cat([masks[s["class_id"]], s["certainty_masks"][confidence-1:confidence]], dim=0)
-            else:
-                class_attr[s["class_id"]] = (s["attr"]*s["certainty_masks"][confidence-1]).unsqueeze(0)
-                masks[s["class_id"]] = s["certainty_masks"][confidence-1:confidence]
-        class_attr_list = list()
-        for i in range(self.num_classes):
-            mask_sum = torch.sum(masks[i], dim=0)
-            mask_no_value = mask_sum == 0
-            class_attr_gt = torch.sum(class_attr[i]*masks[i], dim=0) / mask_sum
-            class_attr_gt[mask_no_value] = -1
-            class_attr_list.append(class_attr_gt)
-
-        class_attr = torch.stack(class_attr_list, dim=0)
-        return class_attr
 
     def update_info_resize(self, sample, init_size, new_size):
         ratio = (new_size[0]/init_size[0], new_size[1]/init_size[1])

@@ -1,6 +1,6 @@
 from setuptools import setup, find_namespace_packages
 
-setup(name='ExplainableClip',
+setup(name='MultitaskVLFM',
       packages=find_namespace_packages(include=["Multitasking", "Multitasking.*"]),
       version='1.0.0',
       install_requires=[

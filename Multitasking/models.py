@@ -116,7 +116,7 @@ class ClipManager(Module):
 
         if last_tr:
             seq = seq.permute(1, 0, 2)
-            seq = self.clip.transformer.last_layer(seq)
+            seq = self.clip.transformer.last_layer(seq, attn_mask=None if not self.open_model else self.clip.attn_mask)
             seq = seq.permute(1, 0, 2)  # LND -> NLD
             seq = self.clip.ln_final(seq).type(self.dtype)
 

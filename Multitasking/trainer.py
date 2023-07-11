@@ -416,14 +416,12 @@ class Trainer:
                 if self.acc_attr_features is None:
                     self.acc_attr_features = self.get_attr_from_freezing([0, ])
                 attr_features, attr_sequence = self.acc_attr_features
-                attr_sequence = torch.repeat_interleave(attr_sequence, batch_size, dim=0)
                 attr_features = torch.repeat_interleave(attr_features, batch_size, dim=0)
             else:
                 if self.acc_attr_features is None:
                     feat, seq, _, _ = self.compute_attr_embedding([0, ], device=self.device, train=True)
                     self.acc_attr_features = (feat[0], seq[0])
                 attr_features, attr_sequence = self.acc_attr_features
-                attr_sequence = torch.repeat_interleave(attr_sequence.unsqueeze(0), batch_size, dim=0)
                 attr_features = torch.repeat_interleave(attr_features.unsqueeze(0), batch_size, dim=0)
 
             # Compute similarity scores
@@ -786,9 +784,6 @@ class Trainer:
             sequence = torch.cat(sequence, dim=0)
             pos_eot = torch.cat(pos_eot, dim=0)
         return text_features, sequence, pos_eot
-
-    def get_class_attr_gt(self):
-        return self.get_default_dataset().class_attr_gt
 
     def get_num_attributes(self):
         return self.get_default_dataset().num_attr

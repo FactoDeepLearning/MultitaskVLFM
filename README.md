@@ -57,7 +57,7 @@ Here is a list of the available arguments
 --load-pretrain  # Whether to load pre-trained weights or not [default=False]
 # Must be used with default values for --train-X options
 
---train  # Wheter to train the model until reaching "--num-epochs" or not [default=True]
+--train  # Whether to train the model until reaching "--num-epochs" or not [default=True]
 --eval  # Whether to evaluate the model on the test set or not [default=True]
 
 --train-class  # Whether to use classification loss (through embedding similarity) or not [default=True]
