@@ -1,11 +1,11 @@
-# Leveraging vision-language foundation models for fine-grained downstream tasks
+# Leveraging Vision-Language Foundation Models for Fine-Grained Downstream Tasks
 
 This repository is the official implementation of the paper:
-"Leveraging vision-language foundation models for fine-grained downstream tasks"
+"Leveraging Vision-Language Foundation Models for Fine-Grained Downstream Tasks"
 
 ![image](visual.png)
 
-The paper is available [COMING SOON]()
+The paper is available [here](https://arxiv.org/abs/2307.06795)
 
 ## Getting Started
 
@@ -82,4 +82,13 @@ Here is a list of the available arguments
 
 ## Citation
 
-COMING SOON
+```bibtex
+@misc{Coquenet2023d,
+      title={Leveraging Vision-Language Foundation Models for Fine-Grained Downstream Tasks}, 
+      author={Denis Coquenet and Clément Rambour and Emanuele Dalsasso and Nicolas Thome},
+      year={2023},
+      eprint={2307.06795},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
