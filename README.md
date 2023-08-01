@@ -5,7 +5,9 @@ This repository is the official implementation of the paper:
 
 ![image](visual.png)
 
-The paper is available [here](https://arxiv.org/abs/2307.06795)
+The paper is available [here](https://arxiv.org/abs/2307.06795).
+
+Pre-trained model is available [here](https://zenodo.org/record/8124014).
 
 ## Getting Started
 
